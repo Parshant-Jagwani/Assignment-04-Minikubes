@@ -1,13 +1,13 @@
 # Assignment-04-Minikubes
 ## Files Included:
-- **Images:** This folder contains image resources used in the portfolio website.
-- **index.html:** The main HTML file that serves as the entry point for the portfolio site.
-- **script.js:** JavaScript file responsible for adding interactivity and functionality to the site.
-- **style.css:** Cascading Style Sheets file defining the visual appearance and layout of the website.
-- **Dockerfile:** This file contains instructions for building a Docker image of the portfolio website. It specifies the environment and dependencies required for the website to run smoothly within a Docker container.
-- **web-server-deployment.yaml:** Kubernetes deployment file for deploying the web server component of the portfolio website.
-- **web-server-ingress.yaml:** Kubernetes Ingress file for configuring external access to the web server.
-- **web-server-service.yaml:** Kubernetes Service file for exposing the web server to other components within the cluster.
+- **[Images](https://github.com/Parshant-Jagwani/Assignment-04-Minikubes/tree/main/Images):** This folder contains image resources used in the portfolio website.
+- **[index.html](https://github.com/Parshant-Jagwani/Assignment-04-Minikubes/tree/main/index.html):** The main HTML file that serves as the entry point for the portfolio site.
+- **[script.js](https://github.com/Parshant-Jagwani/Assignment-04-Minikubes/tree/main/script.js):** JavaScript file responsible for adding interactivity and functionality to the site.
+- **[style.css](https://github.com/Parshant-Jagwani/Assignment-04-Minikubes/tree/main/style.css):** Cascading Style Sheets file defining the visual appearance and layout of the website.
+- **[Dockerfile](https://github.com/Parshant-Jagwani/Assignment-04-Minikubes/tree/main/Dockerfile):** This file contains instructions for building a Docker image of the portfolio website. It specifies the environment and dependencies required for the website to run smoothly within a Docker container.
+- **[web-server-deployment.yaml](https://github.com/Parshant-Jagwani/Assignment-04-Minikubes/tree/main/web-server-deployment.yaml):** Kubernetes deployment file for deploying the web server component of the portfolio website.
+- **[web-server-ingress.yaml](https://github.com/Parshant-Jagwani/Assignment-04-Minikubes/tree/main/web-server-ingress.yaml):** Kubernetes Ingress file for configuring external access to the web server.
+- **[web-server-service.yaml](https://github.com/Parshant-Jagwani/Assignment-04-Minikubes/tree/main/web-server-service.yaml):** Kubernetes Service file for exposing the web server to other components within the cluster.
 
 # Minikube Installation:
 
@@ -215,3 +215,5 @@
      ![output c](https://github.com/Parshant-Jagwani/Assignment-04-Minikubes/blob/main/outputs-Asssignment-4/Accessibility-c-Output.png)
 
 
+# Extra: [web-server-ingress.yaml](https://minikube.sigs.k8s.io/docs/start/).
+  *I had Use Ingress to delpoy the website on extrnal-ip domain. for now I dont have domian name so just create web-server-ingress.yaml*
