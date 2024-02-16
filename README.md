@@ -124,26 +124,76 @@
 # Setting Up Services:
 
 ## For Setting Up Services: I had Create web-server-service.yaml in which all the services are given below named as:
-   - web-server-nodeport: as NodePort
-   - web-server-service: as ClusterIP
-   - web-server-loadbalancer: as LoadBalancer
+   - **web-server-service.yaml** 
+      - web-server-nodeport: as NodePort
+      - web-server-service: as ClusterIP
+      - web-server-loadbalancer: as LoadBalancer
+   - **Code:** *web-server-service.yaml*
+     ```
+            apiVersion: v1
+            kind: Service
+            metadata:
+              name: web-server-service
+              namespace: default
+            spec:
+              selector:
+                app: web-server
+              ports:
+                - name: http
+                  protocol: TCP
+                  port: 80
+                  targetPort: 80
+            ---
+            apiVersion: v1
+            kind: Service
+            metadata:
+              name: web-server-nodeport
+              namespace: default
+            spec:
+              type: NodePort
+              selector:
+                app: web-server
+              ports:
+                - name: http
+                  protocol: TCP
+                  port: 80
+                  targetPort: 80
+                  nodePort: 30002  
+            ---
+            apiVersion: v1
+            kind: Service
+            metadata:
+              name: web-server-loadbalancer
+              namespace: default
+            spec:
+              type: LoadBalancer
+              selector:
+                app: web-server
+              ports:
+                - name: http
+                  protocol: TCP
+                  port: 80
+                  targetPort: 80
+            
+
+     ```
    **Command:**: 
       `kubectl apply -f web-server-service.yaml`
 
    **Output:**:
-
-      ```
+   ```
       PS C:\Users\parsh\OneDrive\Desktop\CODE-REPO\PJ-Portfolio\Parshant-Jagwani-Portfolio> kubectl get services
       NAME                      TYPE           CLUSTER-IP            EXTERNAL-IP   PORT(S)        AGE
       kubernetes                ClusterIP      10.96.0.1             <none>        443/TCP        6d2h
       web-server-loadbalancer   LoadBalancer   10.103.14.210         <pending>     80:31284/TCP   2m4s
       web-server-nodeport       NodePort       10.110.123.110        <none>        80:30001/TCP   2m4s
       web-server-service        ClusterIP      10.106.12.91          <none>        80/TCP         2m6s
-    ``` 
+   ``` 
       
 
 ## a. Create a NodePort service to expose one of the deployments.
    - web-server-nodeport: as NodePort
+   - **Code:**
 
 ## b. Create a ClusterIP service to expose the second deployment.
    - web-server-service: as ClusterIP
