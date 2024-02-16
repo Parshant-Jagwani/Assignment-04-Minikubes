@@ -128,6 +128,11 @@
       - web-server-nodeport: as NodePort
       - web-server-service: as ClusterIP
       - web-server-loadbalancer: as LoadBalancer
+
+### a. Create a NodePort service to expose one of the deployments.
+### b. Create a ClusterIP service to expose the second deployment.
+### c. Create a LoadBalancer service to expose the third deployment.
+## *For Part a, b, and c Code is given Bellow* ##
    - **Code:** *web-server-service.yaml*
      ```
             apiVersion: v1
@@ -173,14 +178,15 @@
                 - name: http
                   protocol: TCP
                   port: 80
-                  targetPort: 80
-            
-
+                  targetPort: 80            
      ```
-   **Command:**: 
-      `kubectl apply -f web-server-service.yaml`
 
-   **Output:**:
+## d. Verify the successful creation of the services.
+   - Command:
+     ```
+     kubectl get services
+     ```
+**Output:**:
    ```
       PS C:\Users\parsh\OneDrive\Desktop\CODE-REPO\PJ-Portfolio\Parshant-Jagwani-Portfolio> kubectl get services
       NAME                      TYPE           CLUSTER-IP            EXTERNAL-IP   PORT(S)        AGE
@@ -189,29 +195,14 @@
       web-server-nodeport       NodePort       10.110.123.110        <none>        80:30001/TCP   2m4s
       web-server-service        ClusterIP      10.106.12.91          <none>        80/TCP         2m6s
    ``` 
-      
-
-## a. Create a NodePort service to expose one of the deployments.
-   - web-server-nodeport: as NodePort
-   - **Code:**
-
-## b. Create a ClusterIP service to expose the second deployment.
-   - web-server-service: as ClusterIP
-
-## c. Create a LoadBalancer service to expose the third deployment.
-   - web-server-loadbalancer: as LoadBalancer
-
-## d. Verify the successful creation of the services.
-   - Command:
-     ```
-     kubectl get services
-     ```
 
 # Accessibility Demonstration:
 
 ## a. Explain why pods are inaccessible outside the cluster when using the ClusterIP service.
    - Due to External-IP not being assigned, I accessed it using the following command:
      - Command: `kubectl port-forward service/web-server-service 8080:80`
+     - **output**
+     ![output a](https://github.com/Parshant-Jagwani/Assignment-04-Minikubes/blob/main/outputs-Asssignment-4/Accessibility-a-Output.png)
 
 ## b. Demonstrate how pods are accessible within the cluster using the NodePort service.
    - Unable to access, maybe I didn't mention the IP completely in '- name: http/192.168.49.2' in 'web-server-nodeport'.
@@ -220,5 +211,7 @@
    - This pod is inaccessible outside the cluster due to EXTERNAL-IP being Pending.
    - To achieve accessibility outside the cluster, we have to create Minikube tunnel.
      - Command: `minikube tunnel`
+     - **output**
+     ![output c](https://github.com/Parshant-Jagwani/Assignment-04-Minikubes/blob/main/outputs-Asssignment-4/Accessibility-c-Output.png)
 
 
